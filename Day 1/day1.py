@@ -8,4 +8,7 @@ for index in range(len(input) - 1):
     if (input[index] == input[index + 1]):
         sum += int(input[index])
 
+if (input[0] == input[len(input) - 1]):
+    sum += int(input[0])
+
 print(sum)
