@@ -2,9 +2,16 @@ file = open("input.txt", "r")
 
 input = file.readlines()
 
-sum = 0;
+sumOne = 0
+sumTwo = 0
 for line in input:
     vals = [int(i) for i in line.split()]
-    sum += max(vals) - min(vals)
+    sumOne += max(vals) - min(vals)
 
-print(sum)
+    for i in range(len(vals)):
+        for j in range(len(vals)):
+            if (i != j and vals[i] % vals[j] == 0):
+                sumTwo += vals[i] / vals[j]
+
+print(sumOne)
+print(sumTwo)
