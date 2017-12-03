@@ -1,19 +1,17 @@
-file = open("input.txt")
+file = open("input.txt", "r")
 
 input = file.readline()
 
-sum=0
-for index in range(len(input)):
-    compareIndex = (index + 1) % (len(input) - 1)
+sumPart1=0
+sumPart2=0
+length=len(input)
+for index in range(length):
+    compareIndex = (index + 1) % (length - 1)
     if (input[index] == input[compareIndex]):
-        sum += int(input[index])
-
-print(sum)
-
-sum=0
-for index in range(len(input)):
-    compareIndex = (index + int(len(input) / 2)) % (len(input) - 1)
+        sumPart1 += int(input[index])
+    compareIndex = (index + int(length / 2)) % (length - 1)
     if (input[index] == input[compareIndex]):
-        sum += int(input[index])
+        sumPart2 += int(input[index])
 
-print(sum)
+print(sumPart1)
+print(sumPart2)
