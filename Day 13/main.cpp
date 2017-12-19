@@ -5,8 +5,6 @@
 struct Layer {
 	std::uint16_t depth;
 	std::uint16_t range;
-
-	std::uint16_t securityIndex;
 };
 
 int calcPos(int step, int maxIndex)
