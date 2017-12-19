@@ -39,16 +39,28 @@ int main()
 		infile.close();
 	}
 
-	std::uint64_t severity = 0;
-	for (int i = 0; i < layers.size(); ++i)
+	std::uint64_t offset = 0;
+	bool first = true;
+	std::uint64_t severity;
+	do
 	{
-		if (calcPos(layers.at(i).depth, layers.at(i).range - 1) == 0)
+		severity = 0;
+		for (int i = 0; i < layers.size(); ++i)
 		{
-			severity += layers.at(i).range * layers.at(i).depth;
+			if (calcPos(layers.at(i).depth + offset, layers.at(i).range - 1) == 0)
+			{
+				severity += layers.at(i).range * (layers.at(i).depth + offset);
+				if (!first) break;
+			}
 		}
-	}
-
-	std::cout << severity << std::endl;
+		if (severity != 0) ++offset;
+		if (first)
+		{
+			std::cout << severity << std::endl;
+			first = false;
+		}
+	}while(severity != 0);
+	std::cout << offset << std::endl;
 
 	return 0;
 }
