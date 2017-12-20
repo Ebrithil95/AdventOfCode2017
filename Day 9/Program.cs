@@ -8,6 +8,7 @@ namespace Day_9
         private static int calcScore(string input) {
             int openedGroups = 0;
             int score = 0;
+            int cancelled = 0;
             bool isGarbage = false;
             for (int i = 0; i < input.Length; i++) {
                 var c = input[i];
@@ -17,6 +18,8 @@ namespace Day_9
                         i ++;
                     } else if (c == '>') {
                         isGarbage =  false;
+                    } else {
+                        cancelled++;
                     }
                 } else {
                     if (c == '{') {
@@ -30,6 +33,8 @@ namespace Day_9
                 }
             }
 
+            Console.WriteLine(score);
+            Console.WriteLine(cancelled);
             return score;
         }
 
@@ -40,7 +45,7 @@ namespace Day_9
                 using (StreamReader sr = new StreamReader("input.txt"))
                 {
                     var line = sr.ReadLine();
-                    Console.WriteLine(calcScore(line));
+                    calcScore(line);
                 }
             }
             catch (Exception e) { }
