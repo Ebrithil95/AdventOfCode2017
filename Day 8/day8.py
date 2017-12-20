@@ -5,6 +5,8 @@ lines = open("input.txt", "r").readlines()
 
 registers = dict()
 
+maxVal = 0
+
 for line in lines:
     match = pattern.match(line)
 
@@ -38,5 +40,7 @@ for line in lines:
         if check == "!=":
             if conRegisterVal != checkVal:
                 registers[register] = registers.get(register, 0) + change
+        maxVal = max(max(registers.values()), maxVal)
 
 print(max(registers.values()))
+print(maxVal)
